@@ -1,7 +1,7 @@
 const moment = require('moment/moment');
 const db = require('../database/models');
 const sequelize = db.sequelize;
-const {} = require('express-validator')
+const {validationResult} = require('express-validator')
 
 //Otra forma de llamar a los modelos
 const Movies = db.Movie;
@@ -57,9 +57,9 @@ const moviesController = {
         const errors = validationResult(req);
         if (errors.isEmpty()) {
             
-            const {tittle,release_date,awards,length,rating,genre} = req.body
+            const {title,release_date,awards,length,rating,genre} = req.body
             Movies.create({
-                tittle: tittle.trim(),
+                title: title.trim(),
                 release_date,
                 awards,
                 length,
@@ -70,8 +70,6 @@ const moviesController = {
                 
             })
             .catch(error => console.log(error))
-
-            return res.send(req.body)
 
         }else{
             db.Genre.findAll({
@@ -100,9 +98,9 @@ const moviesController = {
         const errors = validationResult(req);
         if (errors.isEmpty()) {
 
-            const {tittle,release_date,awards,length,rating,genre} = req.body
+            const {title,release_date,awards,length,rating,genre} = req.body
             Movies.update({
-                tittle: tittle.trim(),
+                title: title.trim(),
                 release_date,
                 awards,
                 length,
