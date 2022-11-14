@@ -1,6 +1,7 @@
 const moment = require('moment/moment');
 const db = require('../database/models');
 const sequelize = db.sequelize;
+const {} = require('express-validator')
 
 //Otra forma de llamar a los modelos
 const Movies = db.Movie;
